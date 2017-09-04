@@ -88,7 +88,7 @@ const random = (arr) => {
 
 console.log('starting twitter bot .....')
 const queryBot = () => {
-    query = ['#vuejs', '#VuePackage']
+    query = ['#vuejs', '#VuejsPackage']
     for(var i = 0; i < query.length; i++){
        retweet(query[i]);
        faoriteTweet(query[i]);
