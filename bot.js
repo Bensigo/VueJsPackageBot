@@ -19,26 +19,25 @@ const retweet = (query) => {
     }
     //search for all tweet with the params variable 
     Twitter.get('search/tweets', parms, ( err, data) => {
-        if(!err){
-            //grap the id of tweet
-            try{
-                console.log(data)
+        
+        try{
+            if(!err){
+                //grap the id of tweet
+                // console.log(data)
                 const tweetId = data.statuses[0].id_str
-                console.log(tweetId)
+                // console.log(tweetId)
                 //retwet the tweet with the id
                 Twitter.post('statuses/retweet/:id', { id: tweetId}, (err, res) => {
                     if(err) {
-                        console.log('failed to retweet tweet ')
+                        console.log('failed to retweet tweet with query ' +  query)
                     }
-                    console.log('retweeted successfully');
+                    console.log('retweeted successfully with query ' + query);
                 })
-            }
-            catch(err) {
-                console.log('failed to search for query')
-            }
-            
-        }else{
-            console.log('failed to search for tweet')
+                
+            } 
+        }
+        catch(err) {
+            console.log('failed to search for query ' + query)
         }
     })
 
@@ -60,21 +59,22 @@ const faoriteTweet = (query) => {
                 const tweets = data.statuses
                 //select a random tweet
                 const randomTweet = random(tweets);
+                // console.log(randomTweet)
                 //check if radom tweet exist 
                 if (typeof randomTweet !== 'undefined'){
                     //then favorite the random tweet
-                    Twitter.post('favorites/create', {id: randomTweet.id_str},(err, res) => {
+                    Twitter.post('favorites/create', { id: randomTweet.id_str},(err, res) => {
                         if (err) {
-                            console.log('cannot favorite tweet')
+                            console.log('cannot favorite tweet with query ' + query)
                         }else{
-                            console.log('tweet favourited')
+                            console.log('tweet favourited with query ' + query)
                         }
                     })
                 }
 
             }
         }catch(err){
-            console.log('error while trying to  favoriting tweet')
+            console.log('error while trying to  favoriting tweet with query  ' + query)
         }
             
     })
@@ -82,7 +82,7 @@ const faoriteTweet = (query) => {
 
 
 const random = (arr) => {
-  const index = Math.floor(Math.random()* arr.length) 
+  const index = Math.floor(Math.random()* arr.length + 1) 
   return arr[index] 
 }
 
@@ -93,7 +93,7 @@ const queryBot = () => {
        retweet(query[i]);
        faoriteTweet(query[i]);
     }
-    console.log('waiting cor next 30 mins')
+    console.log('waiting for next 30 mins')
 }
 // retweet()
 queryBot()
