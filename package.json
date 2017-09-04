@@ -4,7 +4,8 @@
   "description": "a vue js bot that retweet all vue tweet with #vuePackage",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "dev": "nodemon bot.js"
   },
   "keywords": [
     "NodeJS",
@@ -15,5 +16,8 @@
   "dependencies": {
     "dotenv": "^4.0.0",
     "twit": "^2.2.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
