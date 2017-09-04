@@ -1,10 +1,12 @@
 const twit = require('twit');
+const express = require('express');
 require('dotenv').config();
 
 //config
 const config = require('./config')
 
-
+const app = express()
+const port = process.env.PORT || 8008
 
 //making instance of twiter an passing the config
 const Twitter = new twit(config);
@@ -86,7 +88,7 @@ const random = (arr) => {
   return arr[index] 
 }
 
-console.log('starting twitter bot .....')
+
 const queryBot = () => {
     query = ['#vuejs', '#VuejsPackage']
     for(var i = 0; i < query.length; i++){
@@ -96,8 +98,14 @@ const queryBot = () => {
     console.log('waiting for next 30 mins')
 }
 // retweet()
-queryBot()
+
 //retweet fuctionality rus every 30mins 
+queryBot()
 setInterval(queryBot, 1800000);
+
+app.listen(port, () => {
+    console.log('starting twitter bot .....')
+  
+})
 
 
