@@ -90,18 +90,18 @@ const random = (arr) => {
 
 
 const queryBot = () => {
-    query = ['#vuejs', '#VuejsPackage']
+    query = ['#vuejs', '#VuejsPackage', "#builtwithvue"]
     for(var i = 0; i < query.length; i++){
        retweet(query[i]);
        faoriteTweet(query[i]);
     }
-    console.log('waiting for next 30 mins')
+    console.log('waiting for next 30 mins') // update to 20 mins 
 }
 // retweet()
 
-//retweet fuctionality rus every 30mins 
+//retweet fuctionality rus every 15mins 
 queryBot()
-setInterval(queryBot, 1800000);
+setInterval(queryBot, 900000);
 
 app.listen(port, () => {
     console.log('starting twitter bot .....')
