@@ -90,7 +90,7 @@ const random = (arr) => {
 
 
 const queryBot = () => {
-    query = ['#vuejs', '#VuejsPackage', "#builtwithvue"]
+    query = ['#vuejs', '#VuejsPackage', "#builtwithvue", "madewithvuejs"]
     for(var i = 0; i < query.length; i++){
        retweet(query[i]);
        faoriteTweet(query[i]);
