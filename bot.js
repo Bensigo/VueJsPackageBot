@@ -92,13 +92,13 @@ const queryBot = () => {
     retweet(query[i]);
     faoriteTweet(query[i]);
   }
-  console.log("waiting for next 15 mins"); // update to 20 mins
+  console.log("waiting for next 20 mins"); // update to 20 mins
 };
 // retweet()
 
 //retweet fuctionality rus every 15mins
 
-setInterval(queryBot, 900000);
+queryBot();
 
 app.listen(port, () => {
   console.log("starting twitter bot .....");
